@@ -1,5 +1,5 @@
 import Gallery from "@/component/gallery";
-import Header from "@/component/header";
+import Header from "@/component/header/header";
 import Navbar from "@/component/nav";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
 
         {/* Header section */}
         <Header />
-
+        
         {/* Gallery Section */}
         <Gallery />
       </div>

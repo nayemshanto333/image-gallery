@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { SearchIcon, UploadIcon } from "./icons";
+import { SearchIcon, UploadIcon } from "../icons";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
@@ -10,6 +10,8 @@ const Header = () => {
   useEffect(() => {
     router.push(searchData ? `/?search=${searchData}` : "/");
   }, [searchData, router]);
+
+  const open = () => router.push("/?popup=true");
 
   return (
     <div className="flex justify-between items-center mt-5 mb-10 gap-4">
@@ -25,7 +27,10 @@ const Header = () => {
         </button>
       </div>
 
-      <button className="flex justify-center items-center font-bold text-xs md:text-base  px-3 md:px-5 py-1 md:py-2 gap-2 uppercase text-white bg-slate-700 hover:bg-slate-600 active:translate-y-0.5 rounded">
+      <button
+        onClick={open}
+        className="flex justify-center items-center font-bold text-xs md:text-base  px-3 md:px-5 py-1 md:py-2 gap-2 uppercase text-white bg-slate-700 hover:bg-slate-600 active:translate-y-0.5 rounded"
+      >
         Upload <UploadIcon />
       </button>
     </div>
