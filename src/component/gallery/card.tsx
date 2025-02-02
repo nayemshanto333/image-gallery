@@ -1,12 +1,18 @@
 import Image from "next/image";
-import React, { FC } from "react";
-import { LikeIcon } from "../icons";
+import React, { FC, useEffect, useState } from "react";
 import { TImage } from "@/type/index.t";
+import {  LikeIcon, LikedIcon  } from "../icons";
 
+const Card: FC<TImage> = (props) => {
+  const { name, url, likes, shares } = props || {};
+  const [totlaLikes, setTolatLikes] = useState(likes);
+  const [save, setSave] = useState(false);
 
-
-const Card:FC<TImage> = (props) => {
-  const{name,url,likes,shares}=props || {};
+  const updateLikes = (issave: boolean) => {
+    setSave(issave);
+    setTolatLikes((prev) => (issave ? prev + 1 : prev - 1));
+    
+  };
 
   return (
     <figure className="w-full relative group overflow-hidden rounded mx-auto ">
@@ -20,10 +26,12 @@ const Card:FC<TImage> = (props) => {
       <figcaption className="w-full absolute :-bottom-20 left-0 flex justify-between items-center bg-slate-900/30 text-white gap-1.5 p-3 invisible group-hover:visible group-hover:bottom-0 transition-all duration-200 ">
         <div className="space-y-1 sm:space-y-2">
           <p className="text-lg font-bold">{name}</p>
-          <p >{likes} Likes | {shares} Shares</p>
+          <p>
+            {totlaLikes} Likes | {shares} Shares
+          </p>
         </div>
-        <button>
-          <LikeIcon />
+        <button onClick={() => updateLikes(!save)}>
+          {save ? <LikedIcon/> : <LikeIcon />}
         </button>
       </figcaption>
     </figure>
@@ -31,3 +39,4 @@ const Card:FC<TImage> = (props) => {
 };
 
 export default Card;
+

@@ -13,8 +13,10 @@ export default function Home() {
         {/* Header section */}
         <Header />
         
+        
         {/* Gallery Section */}
         <Gallery />
+        
         
         
       </div>
