@@ -56,7 +56,7 @@ const Gallery = () => {
       ) : (
         <div>
           <p className="text-slate-500 font-bold text-lg md:text-2xl text-center ">
-            "Data Not Found"
+            `Data Not Found`
           </p>
         </div>
       )}

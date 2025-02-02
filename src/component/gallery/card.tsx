@@ -6,7 +6,7 @@ import { TImage } from "@/type/index.t";
 
 
 const Card:FC<TImage> = (props) => {
-  const{id,name,url,likes,shares}=props || {};
+  const{name,url,likes,shares}=props || {};
 
   return (
     <figure className="w-full relative group overflow-hidden rounded mx-auto ">
