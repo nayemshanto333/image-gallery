@@ -1,7 +1,6 @@
 "use client";
 
 import { Tcategory } from "@/type/index.t";
-import { useRouter } from "next/navigation";
 import React, { FC, useState } from "react";
 
 interface Props {
@@ -11,15 +10,14 @@ interface Props {
 
 const Popup: FC<Props> = ({ submit, close }) => {
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState<Tcategory>("photo");
   const [file, setFile] = useState<File | null>(null);
- 
 
-  const handleChange = () => {
+  const handleSubmit = () => {
     if (name && category && file) submit(name, category as Tcategory, file);
-    setName('')
-    setCategory('photo')
-    setFile(null)
+    setName("");
+    setCategory("photo");
+    setFile(null);
   };
 
   return (
@@ -27,7 +25,10 @@ const Popup: FC<Props> = ({ submit, close }) => {
       <div className="w-full max-w-md p-5 bg-slate-100 rounded-sm space-y-3">
         <div className="flex justify-between items-center">
           <h1 className="text-slate-700 font-semibold">Add new Image</h1>
-          <button onClick={close} className="active:translate-y-0.5 text-slate-800">
+          <button
+            onClick={close}
+            className="active:translate-y-0.5 text-slate-800"
+          >
             ❌
           </button>
         </div>
@@ -43,7 +44,7 @@ const Popup: FC<Props> = ({ submit, close }) => {
           className="w-full"
         />
         <select
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) => setCategory(e.target.value as Tcategory)}
           name=""
           id=""
           className="w-full px-4 py-2 bg-slate-200 border-2 border-slate-400 focus:outline-none "
@@ -52,7 +53,7 @@ const Popup: FC<Props> = ({ submit, close }) => {
           <option value="vector">Vector</option>
         </select>
         <button
-          onClick={handleChange}
+          onClick={handleSubmit}
           className="w-full font-bold text-xs md:text-base  px-3 md:px-5 py-2 gap-2 uppercase text-white bg-slate-700 hover:bg-slate-600 active:translate-y-0.5 rounded"
         >
           Upload
@@ -63,3 +64,4 @@ const Popup: FC<Props> = ({ submit, close }) => {
 };
 
 export default Popup;
+

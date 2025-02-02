@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 import Card from "./card";
 import { data } from "@/data/db";
 import { useRouter, useSearchParams } from "next/navigation";
-import Popup from "./popup";
+
 import { Tcategory, TImage } from "@/type/index.t";
+import Popup from "./popup";
+
 
 
 const Gallery = () => {
